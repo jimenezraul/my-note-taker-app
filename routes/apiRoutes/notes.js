@@ -1,23 +1,28 @@
 const router = require("express").Router();
 
-const { validateNote, createNewNote } = require("../../lib/notes");
+const { createNewNote, deleteNote } = require("../../lib/notes");
 
-const notes = require("../../db/db.json");
+let notes = require("../../db/db.json");
 
+// Get all notes
 router.get("/notes", (req, res) => {
   res.json(notes);
 });
 
+// Post a new note
 router.post("/notes", (req, res) => {
   req.body.id = notes.length.toString();
 
-  // if any data in req.body is incorrect, send 400 error back
-  if (!validateNote(req.body)) {
-    res.status(400).send("The notes is not properly formatted.");
-  } else {
-    const note = createNewNote(req.body, notes);
-    res.json(note);
-  }
+  const note = createNewNote(req.body, notes);
+  res.json(note);
+});
+
+// Delete a note by id
+router.delete("/notes/:id", (req, res) => {
+  const id = req.params.id;
+  const newArray = deleteNote(id, notes);
+  notes = newArray
+  res.json(newArray);
 });
 
 module.exports = router;
