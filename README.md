@@ -11,6 +11,7 @@ This is a simple application that allows you to take notes.
   - [Table of Contents](#table-of-contents)
   - [Usage](#usage)
   - [Screenshot](#screenshot)
+  - [Deployment](#deployment)
   - [Installation](#installation)
   - [Start the app](#start-the-app)
   - [Testing](#testing)
@@ -24,6 +25,10 @@ You can also delete notes at any time.
 
 ## Screenshot
 ![screenshot](./img/screenshot.png)
+
+## Deployment
+This application is deployed on Heroku.
+[Live Link](https://note-taker-app-05.herokuapp.com/)
 
 ## Installation
 ```
